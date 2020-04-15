@@ -9,7 +9,7 @@ import string
 import argparse
 import fileinput
 
-
+# only care about these entity types
 ENT_SET = ('PERSON', 'NORP', 'FAC', 'ORG', 'GPE', 'LOC', 'PRODUCT', 'EVENT', 'LANGUAGE', 'DATE', 'TIME')  # refer to https://spacy.io/api/annotation#named-entities
 
 ap = argparse.ArgumentParser()
@@ -36,6 +36,7 @@ with open('output.txt', 'w') as f:
         tokensTrueCase = getTrueCase(tokens, 'title', wordCasingLookup, uniDist, backwardBiDist, forwardBiDist, trigramDist)
         f.write(" ".join(tokensTrueCase))
 
+# you can experiment with models here
 # model = spacy.load("en_core_web_sm")
 model = spacy.load("en_core_web_md")
 # model = spacy.load("en_core_web_lg")
@@ -44,6 +45,6 @@ with open('output.txt', 'r') as f:
     doc = f.read()
 
 annotations = model(doc)
-entities = [ent for ent in annotations.ents if ent.label_ in ENT_SET ]
+entities = [ent for ent in annotations.ents if ent.label_ in ENT_SET ]  # filter entities
 
 print(entities)
