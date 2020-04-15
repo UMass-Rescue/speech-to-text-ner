@@ -37,6 +37,7 @@ with open('output.txt', 'w') as f:
         f.write(" ".join(tokensTrueCase))
 
 # you can experiment with models here
+
 # model = spacy.load("en_core_web_sm")
 model = spacy.load("en_core_web_md")
 # model = spacy.load("en_core_web_lg")
