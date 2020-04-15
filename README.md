@@ -16,6 +16,8 @@ Now, we want to download 3 models from spacy, so that we can experiment with the
 - `python -m spacy download en_core_web_md`
 - `python -m spacy download en_core_web_lg`
 
+Finally, we want to download a distributions object for casing the text files appropriately. Download it from [here](https://github.com/nreimers/truecaser/releases/download/v1.0/english_distributions.obj.zip), and unzip it in the root directory.
+
 You are now ready to run `ner.py` on text files! In order to do so, run the following command:
 
 `python ner.py -f sample.txt -d distributions.obj`
