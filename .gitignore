@@ -39,3 +39,4 @@ src/AmherstMA_projected.pkl
 *.pyc
 *.mypy_cache
 distributions.obj
+output.txt

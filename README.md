@@ -18,10 +18,14 @@ Now, we want to download 3 models from spacy, so that we can experiment with the
 
 Finally, we want to download a distributions object for casing the text files appropriately. Download it from [here](https://github.com/nreimers/truecaser/releases/download/v1.0/english_distributions.obj.zip), and unzip it in the root directory.
 
+### Running the code
 You are now ready to run `ner.py` on text files! In order to do so, run the following command:
 
 `python ner.py -f sample.txt -d distributions.obj`
 
 You can replace `sample.txt` with any text file. The output is a list of all entities found in the text file.
 
+`ner.py` also contains an entity set to filter out the entities, which can be modified. Refer to [this webpage](https://spacy.io/api/annotation#named-entities) for more information.
+
 DISCLAIMER: This repository makes use of TrueCaser, an open source project designed with the goal of reassigning case to uncased files. Since speech to text files are usually uncased, this resource is of an immense help. Check it out [here](https://github.com/nreimers/truecaser). Also note that this was written in Python 2.7, so I had to modify it for Python 3.6.
+
