@@ -9,8 +9,6 @@ import string
 import argparse
 import fileinput
 
-# download necessary resource
-nltk.download('punkt')
 
 # only care about these entity types
 ENT_SET = ('PERSON', 'NORP', 'FAC', 'ORG', 'GPE', 'LOC', 'PRODUCT', 'EVENT', 'LANGUAGE', 'DATE', 'TIME')  # refer to https://spacy.io/api/annotation#named-entities
@@ -32,12 +30,13 @@ with open(dist_obj, 'rb') as f:
     trigramDist = cPickle.load(f)
     wordCasingLookup = cPickle.load(f)
 
-with open('output.txt', 'w') as f:
-    for sentence in fileinput.input(text_file):
-        tokensCorrect = nltk.word_tokenize(sentence)
-        tokens = [token.lower() for token in tokensCorrect]
-        tokensTrueCase = getTrueCase(tokens, 'title', wordCasingLookup, uniDist, backwardBiDist, forwardBiDist, trigramDist)
-        f.write(" ".join(tokensTrueCase))
+output_str = ''
+
+for sentence in fileinput.input(text_file):
+    tokensCorrect = nltk.word_tokenize(sentence)
+    tokens = [token.lower() for token in tokensCorrect]
+    tokensTrueCase = getTrueCase(tokens, 'title', wordCasingLookup, uniDist, backwardBiDist, forwardBiDist, trigramDist)
+    output_str += " ".join(tokensTrueCase)
 
 # you can experiment with models here
 
@@ -45,10 +44,7 @@ with open('output.txt', 'w') as f:
 model = spacy.load("en_core_web_md")
 # model = spacy.load("en_core_web_lg")
 
-with open('output.txt', 'r') as f:
-    doc = f.read()
-
-annotations = model(doc)
+annotations = model(output_str)
 entities = [ent for ent in annotations.ents if ent.label_ in ENT_SET ]  # filter entities
 
 print(entities)
