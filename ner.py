@@ -9,6 +9,9 @@ import string
 import argparse
 import fileinput
 
+# download necessary resource
+nltk.download('punkt')
+
 # only care about these entity types
 ENT_SET = ('PERSON', 'NORP', 'FAC', 'ORG', 'GPE', 'LOC', 'PRODUCT', 'EVENT', 'LANGUAGE', 'DATE', 'TIME')  # refer to https://spacy.io/api/annotation#named-entities
 
