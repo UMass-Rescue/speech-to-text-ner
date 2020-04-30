@@ -1,0 +1,6 @@
+name: nerenv
+dependencies:
+  - python=3.7
+  - numpy
+  - spacy
+  - nltk
