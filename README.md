@@ -20,7 +20,7 @@ We also want to download the `nltk tokenizer`, so run the following command to d
 
 ``` python -m nltk.downloader 'punkt' ```
 
-Finally, we want to download a distributions object for casing the text files appropriately. Download it from [here](https://github.com/nreimers/truecaser/releases/download/v1.0/english_distributions.obj.zip), and unzip it in the root directory. Alternative, if you have wget installed, you can enter the following command:
+Finally, we want to download a distributions object for casing the text files appropriately. Download it from [here](https://github.com/nreimers/truecaser/releases/download/v1.0/english_distributions.obj.zip), and unzip it in the root directory. Alternatively, if you have wget installed, you can enter the following command:
 
 ``` wget https://github.com/nreimers/truecaser/releases/download/v1.0/english_distributions.obj.zip ```
 
